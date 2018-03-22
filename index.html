@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+<title>W3.CSS Template</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="mystyle.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+body,h1 {font-family: "Montserrat", sans-serif}
+img {margin-bottom: -7px}
+.row-padding img {margin-bottom: 12px}
+</style>
+<body>
+
+<!-- Sidebar -->
+<nav class="sidebar light-grey animate-left xxlarge" style="display:none;padding-top:150px" id="mySidebar">
+  <a href="javascript:void(0)" onclick="w3_close()" class="button black xxlarge padding display-topright" style="padding:6px 24px">
+    <i class="fa fa-remove"></i>
+  </a>
+  <div class="bar-block center">
+    <a href="#" class="bar-item button text-grey hover-teal">Home</a>
+    <a href="#" class="bar-item button text-grey hover-teal">Navigate</a>
+    <a href="#" class="bar-item button text-grey hover-teal">Report an incident</a>
+    <a href="#" class="bar-item button text-grey hover-teal">Notifications</a>
+  </div>
+</nav>
+
+<!-- !PAGE CONTENT! -->
+<div class="content" style="max-width:1500px">
+
+<!-- Header -->
+<div class="opacity">
+<span class="button xxlarge white left" onclick="w3_open()"><i class="fa fa-bars"></i></span> 
+<div class="clear"></div>
+<header class="center margin-bottom">
+  <h1><b>Know your surroundings</b></h1>
+  <p><b>Be safe!</b></p>
+  <p class="padding-16"><button class="button black" onclick="myFunction()">Navigate</button></p>
+</header>
+</div>
+</div>
+
+<!-- Map -->
+<center>
+  <input id="pac-input" class="controls" type="text" placeholder="Search Box">
+<div id="map" style="height:700px; width:600px;"></div>
+</center>
+<!-- End Page Content -->
+</div>
+<!-- Footer -->
+<footer class="container padding-64 light-grey center opacity xlarge" style="margin-top:128px"> 
+  <i class="fa fa-facebook-official hover-opacity"></i>
+  <i class="fa fa-instagram hover-opacity"></i>
+  <i class="fa fa-snapchat hover-opacity"></i>
+  <i class="fa fa-pinterest-p hover-opacity"></i>
+  <i class="fa fa-twitter hover-opacity"></i>
+  <i class="fa fa-linkedin hover-opacity"></i>
+  <p class="medium">Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank" class="hover-text-green">w3.css</a></p>
+</footer>
+ 
+<script>
+// Toggle grid padding
+function myFunction() {
+    var x = document.getElementById("myGrid");
+    if (x.className === "row") {
+        x.className = "row-padding";
+    } else { 
+        x.className = x.className.replace("row-padding", "row");
+    }
+}
+
+// Open and close sidebar
+function w3_open() {
+    document.getElementById("mySidebar").style.width = "50%";
+    document.getElementById("mySidebar").style.display = "block";
+}
+
+function w3_close() {
+    document.getElementById("mySidebar").style.display = "none";
+}
+
+function initAutocomplete() {
+
+        var myLatLng = {lat: -33.8688, lng: 151.2195};
+        var map = new google.maps.Map(document.getElementById('map'), {
+          center: myLatLng,
+          zoom: 15,
+          mapTypeId: 'roadmap'
+        });
+
+        // Create the search box and link it to the UI element.
+        var input = document.getElementById('pac-input');
+        var searchBox = new google.maps.places.SearchBox(input);
+        map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
+
+        // Bias the SearchBox results towards current map's viewport.
+        map.addListener('bounds_changed', function() {
+          searchBox.setBounds(map.getBounds());
+        });
+
+        var markers = [];
+
+        var marker = new google.maps.Marker({
+          position: myLatLng,
+          map: map,
+          title: 'You are here'
+        });
+        // Listen for the event fired when the user selects a prediction and retrieve
+        // more details for that place.
+        searchBox.addListener('places_changed', function() {
+          var places = searchBox.getPlaces();
+
+          if (places.length == 0) {
+            return;
+          }
+
+          // Clear out the old markers.
+          markers.forEach(function(marker) {
+            marker.setMap(null);
+          });
+          markers = [];
+
+          // For each place, get the icon, name and location.
+          var bounds = new google.maps.LatLngBounds();
+          places.forEach(function(place) {
+            if (!place.geometry) {
+              console.log("Returned place contains no geometry");
+              return;
+            }
+            var icon = {
+              url: place.icon,
+              size: new google.maps.Size(71, 71),
+              origin: new google.maps.Point(0, 0),
+              anchor: new google.maps.Point(17, 34),
+              scaledSize: new google.maps.Size(25, 25)
+            };
+
+            // Create a marker for each place.
+            markers.push(new google.maps.Marker({
+              map: map,
+              icon: icon,
+              title: place.name,
+              position: place.geometry.location
+            }));
+
+            if (place.geometry.viewport) {
+              // Only geocodes have viewport.
+              bounds.union(place.geometry.viewport);
+            } else {
+              bounds.extend(place.geometry.location);
+            }
+          });
+          map.fitBounds(bounds);
+        });
+      }
+
+
+
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDqaR-ucRURy61Z0CorCylbOvQXVWCRMLs&libraries=places&callback=initAutocomplete"
+         async defer></script>
+</body>
+</html>
