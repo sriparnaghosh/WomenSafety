@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<title>W3.CSS Template</title>
+<title>Safety App</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="mystyle.css">
@@ -19,8 +19,8 @@ img {margin-bottom: -7px}
     <i class="fa fa-remove"></i>
   </a>
   <div class="bar-block center">
-    <a href="#" class="bar-item button text-grey hover-teal">Home</a>
-    <a href="#" class="bar-item button text-grey hover-teal">Navigate</a>
+    <a href="index.html" class="bar-item button text-grey hover-teal">Home</a>
+    <a href="navigate.html" class="bar-item button text-grey hover-teal">Navigate</a>
     <a href="#" class="bar-item button text-grey hover-teal">Report an incident</a>
     <a href="#" class="bar-item button text-grey hover-teal">Notifications</a>
   </div>
@@ -62,12 +62,7 @@ img {margin-bottom: -7px}
 <script>
 // Toggle grid padding
 function myFunction() {
-    var x = document.getElementById("myGrid");
-    if (x.className === "row") {
-        x.className = "row-padding";
-    } else { 
-        x.className = x.className.replace("row-padding", "row");
-    }
+    location.href = "navigate.html";
 }
 
 // Open and close sidebar
@@ -81,6 +76,7 @@ function w3_close() {
 }
 
 function initAutocomplete() {
+
 
         var myLatLng = {lat: -33.8688, lng: 151.2195};
         var map = new google.maps.Map(document.getElementById('map'), {
