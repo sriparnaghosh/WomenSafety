@@ -1,0 +1,139 @@
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<!DOCTYPE html>
+<html lang="en">
+    <head> 
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+		<!-- Website CSS style -->
+		<link href="css/bootstrap.min.css" rel="stylesheet">
+
+		<!-- Website Font style -->
+	    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+		<link rel="stylesheet" href="style.css">
+		<!-- Google Fonts -->
+		<link href='https://fonts.googleapis.com/css?family=Passion+One' rel='stylesheet' type='text/css'>
+		<link href='https://fonts.googleapis.com/css?family=Oxygen' rel='stylesheet' type='text/css'>
+
+		<title>Report form</title>
+	</head>
+	<body>
+	<!-- Sidebar -->
+<nav class="sidebar light-grey animate-left xxlarge" style="display:none;padding-top:150px" id="mySidebar">
+  <a href="javascript:void(0)" onclick="w3_close()" class="button black xxlarge padding display-topright" style="padding:6px 24px">
+    <i class="fa fa-remove"></i>
+  </a>
+  <div class="bar-block center">
+    <a href="index.html" class="bar-item button text-grey hover-teal">Home</a>
+    <a href="navigate.html" class="bar-item button text-grey hover-teal">Navigate</a>
+    <a href="report.html" class="bar-item button text-grey hover-teal">Report an incident</a>
+    <a href="#" class="bar-item button text-grey hover-teal">Notifications</a>
+  </div>
+</nav>
+<div class="opacity">
+<span class="button xxlarge white left" onclick="w3_open()"><i class="fa fa-bars"></i></span> 
+<div class="clear"></div>
+<header class="center margin-bottom">
+		<div class="container">
+			<div class="row main">
+				<div class="main-login main-center">
+				<h2>Crime Report Form</h2>
+					<form class="" method="post" action="#">
+						
+						<div class="form-group">
+							<label for="Date" class="cols-sm-2 control-label">Incident Date</label>
+							<div class="cols-sm-10">
+								<div class="input-group">
+									<span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+									<input type="date" class="form-control" name="date" id="date"  placeholder="Enter the Date"/>
+								</div>
+							</div>
+						</div>
+
+						<div class="form-group">
+							<label for="Time" class="cols-sm-2 control-label">Incident time</label>
+							<div class="cols-sm-10">
+								<div class="input-group">
+									<span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
+									<input type="time" class="form-control" name="time" id="time"  placeholder="Enter the time"/>
+								</div>
+							</div>
+						</div>
+
+						<div class="form-group">
+							<label for="username" class="cols-sm-2 control-label">Location</label>
+							<div class="cols-sm-10">
+								<div class="input-group">
+									<span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
+									<input type="text" class="form-control" name="location" id="location"  placeholder="Enter the location"/>
+								</div>
+							</div>
+						</div>
+
+						<div class="form-group">
+							<label for="victim" class="cols-sm-2 control-label">Victim</label>
+							<div class="cols-sm-10">
+								<div class="input-group">
+									<span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
+									<input type="text" class="form-control" name="name" id="name"  placeholder="Enter Victim name"/>
+								</div>
+							</div>
+						</div>
+
+						<div class="form-group">
+							<label for="confirm" class="cols-sm-2 control-label">Crime description</label>
+							<div class="cols-sm-10">
+								<div class="input-group">
+									<span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
+									<select class="form-control"><option value="select" >Select</option>
+  <option value="Rape">Rape</option>
+  <option value="Molestation">Molestation</option>
+  <option value="Harrasment">harrassment</option>
+  <option value="Eve Teasing">Eve teasing</option>
+  <option value="Murder">Murder</option>
+</select><class="form-control" name="crime" id="crime"  placeholder="Crime Type"/>
+								</div>
+							</div>
+						</div>
+												<div class="form-group">
+							<label for="reporter" class="cols-sm-2 control-label">Reporter</label>
+							<div class="cols-sm-10">
+								<div class="input-group">
+									<span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
+									<input type="text" class="form-control" name="name" id="name"  placeholder="Enter Reporter name"/>
+								</div>
+							</div>
+						</div>
+
+						<div class="form-group ">
+							<a href="" target="_blank" type="button" id="button"  align="center" class="btn btn-primary btn-lg btn-block login-button" >Submit</a>
+						</div>
+						
+					</form>
+				</div>
+			</div>
+		</div>
+
+		 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+		 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+   <script> 
+
+   function w3_open() {
+    document.getElementById("mySidebar").style.width = "50%";
+    document.getElementById("mySidebar").style.display = "block";
+}
+
+function w3_close() {
+    document.getElementById("mySidebar").style.display = "none";
+}
+</script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+    </script>
+	</body>
+</html>
