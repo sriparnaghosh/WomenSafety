@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<select name="meal" id="meal" onChange="changecat(this.value);">
+    <option value="" disabled selected>Select</option>
+    <option value="A">Chicago</option>
+    <option value="B">Others</option>
+    
+</select>
+<select name="category" id="category">
+    <option value="" disabled selected>Select</option>
+</select>
+
+<script>
+var mealsByCategory = {
+    A: ["central","wentworth","grand crossing","south chicago"],
+    B: [ ]
+    }
+
+    function changecat(value) {
+    	//if(value=='A')
+    	//alert("blocked");
+
+        if (value.length == 0) document.getElementById("category").innerHTML = "<option></option>";
+        /*else if(value=='B')
+        	for (categoryId in mealsByCategory[value]) {
+                catOptions += "<option disabled>" + mealsByCategory[value][categoryId] + "</option>";
+            }*/
+        else {
+            var catOptions = "";
+            for (categoryId in mealsByCategory[value]) {
+                catOptions += "<option>" + mealsByCategory[value][categoryId] + "</option>";
+            }
+            document.getElementById("category").innerHTML = catOptions;
+        }
+    }
+</script>
+</body>
+</html>
