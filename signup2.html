@@ -81,15 +81,15 @@
 									<span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
 									<div id="abc">
 									<form action="">
-									<input type="radio"  class="form-control" name="A" value="Police">Police <br>
-  									<input type="radio" name="A" class="form-control" value="NGO">NGO<br>
-  									<script>
+									<input type="radio" onclick="changeradio(this.value)" class="form-control" name="A" value="Police">Police <br>
+  									<input type="radio" name="A" onclick="changeradio(this.value)" class="form-control" value="NGO">NGO<br>
+  									<!--script>
   									var rates = document.getElementById('abc').value;
   									/*if(rates=="Police")
   									    id=1;
   									    else
   									    id=2;*/
-  									</script>
+  									</script-->
   									</form>
   									</div>
 								</div>
@@ -102,8 +102,8 @@
 									<span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
 									<select name="meal" class="form-control" id="meal"  onChange="changecat(this.value);">
     <option value="" disabled selected class="form-control" >Select</option>
-    <option value="A" class="form-control" >Chicago</option>
-    <option value="B" class="form-control" >Others</option>
+    <option value="Chicago" class="form-control" >Chicago</option>
+    <option value="Other" class="form-control" >Others</option>
     
 </select>
 </div>
@@ -117,30 +117,49 @@
 <select name="category" id="category" class="form-control">
     <option value="" disabled selected class="form-control"  >Select</option>
 </select>
-						
-
+		<p id="demo"></p>
+		<script>
+		var x;
+		function changeradio(val)
+		{
+			x=val;
+			//console.log(x);
+		}			
+</script>
 <script>
+var y;
+var z;
 var mealsByCategory = {
 
-    A: ["Central","wentworth","grand crossing","south chicago"],
-    B: [ ]
+    Chicago: [ "Select", "Central","wentworth","grand crossing","south chicago"],
+    Others: [ ]
     }
 
     function changecat(value) {
     	//if(value=='A')
     	//alert("blocked");
+    	
+    	y=document.getElementById('meal').value;
 
         if (value.length == 0) document.getElementById("category").innerHTML = "<option></option>";
         /*else if(value=='B')
         	for (categoryId in mealsByCategory[value]) {
                 catOptions += "<option disabled>" + mealsByCategory[value][categoryId] + "</option>";
             }*/
-        else {
+        //if(value.length>1){
+        	else
+        	{
             var catOptions = "";
-            for (categoryId in mealsByCategory[value]) {
+          {
+            for ((categoryId) in mealsByCategory[value]) {
                 catOptions += "<option>" + mealsByCategory[value][categoryId] + "</option>";
+            
             }
+        }
+        if(!mealsByCategory[value][0])
             document.getElementById("category").innerHTML = catOptions;
+            z=document.getElementById('category').value;
+           // console.log(z);
         }
     }
 </script>
@@ -187,22 +206,33 @@ function w3_close() {
 <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase.js"></script>
 <script>
 	
-	function writeUserData(id_val) {
+	function writeUserData(name1,phone1,email1,id_val,city1,locality1) {
 	  database.push().set({
-	    /*name: name1,
+	    name: name1,
 	    phone: phone1,
-	    email: email1,*/
-	    profession: id_val
+	    email: email1,
+	  	profession: id_val,
+	 	city: city1,
+	 	locality: locality1
+
 	  });
 	}
 
 	$('#button').click(function(){
-		//writeUserData($('#name').val(),$('#phone').val(),$('#email').val(),rates);
-		writeUserData($('#abc').val());
-		/*$('#name').val('');
+
+		writeUserData($('#name').val(),$('#phone').val(),$('#email').val(),window.x,window.y,window.z);
+		//writeUserData($('#email').val(''),$('x').val(''));
+		//writeUserData();
+		$('#name').val('');
 		$('#phone').val('');
-		$('#email').val();*/
-		$('#abc').val();
+		$('#email').val('');
+		window.x;
+		window.y;
+		window.z;
+		//$('#category').find(":selected").text;
+		
+		//x;
+		//$('x').val('');
 	});
   // Initialize Firebase
   // TODO: Replace with your project's customized code snippet
